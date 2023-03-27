@@ -2,7 +2,7 @@
 function App() {
   return (
     <>
-      <h1>Todo</h1>
+      <h1>hi</h1>
     </>
   );
 }
