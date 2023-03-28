@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect} from 'react';
 import useForm from '../../hooks/form';
+import { SettingContext } from '../../Context/Settings';
 
 import { v4 as uuid } from 'uuid';
 
 const Todo = () => {
 
-  const [defaultValues] = useState({
-    difficulty: 4,
-  });
-  const [list, setList] = useState([]);
-  const [incomplete, setIncomplete] = useState([]);
+  const {list, setList, incomplete, setIncomplete, defaultValues} = useContext(SettingContext);
+
+  // const [defaultValues] = useState({
+  //   difficulty: 4,
+  // });
+  // const [list, setList] = useState([]);
+  // const [incomplete, setIncomplete] = useState([]);
   const { handleChange, handleSubmit } = useForm(addItem, defaultValues);
 
   function addItem(item) {
