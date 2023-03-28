@@ -10,7 +10,7 @@
 
 ### Links and Resources
 
-<!-- - [GitHub Actions ci/cd](https://github.com/rkgallaway/server-deployment-practice-d51/actions)  -->
+- [GitHub Actions ci/cd](https://github.com/brenda70904/todo-app/actions/) 
 <!-- - [back-end server url](http://xyz.com) (when applicable) -->
 <!-- - [front-end application](http://xyz.com) (when applicable) -->
 
@@ -33,9 +33,14 @@
 #### Tests
 
 - How do you run tests?
+`npm test`
 - Any tests of note?
 - Describe any tests that you did not complete, skipped, etc
 
 #### UML
 
+class-31
 ![class-31](./assets/class-31.png)
+
+class-32
+![class-32](./assets/class-31.png)
