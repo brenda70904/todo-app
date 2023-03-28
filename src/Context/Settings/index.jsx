@@ -7,6 +7,7 @@ const SettingProvider = ({ children }) => {
   const [values, setValues] = useState({});
 
 // pass to Todo
+  const [activePage, setPage] = useState(1);
   const [list, setList] = useState([]);
   const [incomplete, setIncomplete] = useState([]);
   const [defaultValues] = useState({
@@ -15,6 +16,8 @@ const SettingProvider = ({ children }) => {
 
 
   const contextValue = { 
+    activePage,
+    setPage,
     list, 
     setList, 
     incomplete, 
