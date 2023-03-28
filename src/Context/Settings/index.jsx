@@ -13,9 +13,18 @@ const SettingProvider = ({ children }) => {
   const [defaultValues] = useState({
     difficulty: 4,
   });
-
+  
+  const [displayCount, seDisplayCount] = useState(3);
+  const [sort, setSort] = useState('difficulty');
+  const [showComplete, setShowComplete] = useState(false);
 
   const contextValue = { 
+    showComplete, 
+    setShowComplete,
+    displayCount,
+    seDisplayCount,
+    sort,
+    setSort,
     activePage,
     setPage,
     list, 

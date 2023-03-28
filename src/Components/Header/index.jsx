@@ -1,21 +1,31 @@
-import { createStyles,Text } from "@mantine/core";
+import { createStyles, Header, Navbar,Text} from "@mantine/core";
+
 
 const useStyles = createStyles((theme)=>({
-  header:{
+  navbar:{
     display:'flex',
-    backgroundColor: theme.colors.indigo[1],
+    backgroundColor: theme.colors.blue[9],
+    color: theme.colors.gray[0],
+    hight:'100%',
+    padding:theme.spacing.md,
+    fontSize:theme.fontSizes.md,
+
   },
 
-}))
+}));
 
-const Header = () =>{
+const HeaderComponent = () =>{
   const {classes} = useStyles();
   return(
 
-    <header className={classes.header}>
-      <h1>Todo - App</h1>
-    </header>
+    <Header >
+      <Navbar className={classes.navbar} height={100} >
+          <Text>Home</Text>
+          <Text>Todo - App</Text>
+      </Navbar>
+    
+    </Header>
   )
 }
 
-export default Header;
+export default HeaderComponent;

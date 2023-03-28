@@ -3,11 +3,25 @@ import useForm from '../../hooks/form';
 import { SettingContext } from '../../Context/Settings';
 import List from '../List'
 import { v4 as uuid } from 'uuid';
-import { Button, Input, Rating, Pagination } from '@mantine/core';
+import { Button, Input, Rating, Grid, createStyles } from '@mantine/core';
+
+const useStyles = createStyles((theme) => ({
+  h1: {
+    background: theme.colors.gray[8],
+    color: theme.colors.gray[0],
+    width: '80%',
+    margin: 'auto',
+    fontSize: theme.fontSizes.lg,
+    padding: theme.spacing.md,
+    marginTop: theme.spacing.md,
+    marginBottom: theme.spacing.md,
+  }
+}));
+
 
 const Todo = () => {
-
-  const { activePage, setPage, list, setList, incomplete, setIncomplete, defaultValues } = useContext(SettingContext);
+  const { classes } = useStyles();
+  const { list, setList, incomplete, setIncomplete, defaultValues } = useContext(SettingContext);
   const { handleChange, handleSubmit } = useForm(addItem, defaultValues);
 
   function addItem(item) {
@@ -45,35 +59,41 @@ const Todo = () => {
 
   return (
     <>
+      <h1 data-testid="todo-h1" className={classes.h1} >To Do List: {incomplete} items pending</h1>
+      <Grid styles={{ width: "80%", margin: "auto" }}>
 
-      <form onSubmit={handleSubmit}>
+        <Grid.Col xs={12} sm={4}>
+          <form onSubmit={handleSubmit}>
 
-        <h2>Add To Do Item</h2>
+            <h2>Add To Do Item</h2>
 
-        <label>
-          <span>To Do Item</span>
-          <Input onChange={handleChange} name="text" type="text" placeholder="Item Details" radius="md" />
-        </label>
+            <label>
+              <span>To Do Item</span>
+              <Input onChange={handleChange} name="text" type="text" placeholder="Item Details" radius="md" />
+            </label>
 
-        <label>
-          <span>Assigned To</span>
-          <Input onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" radius="md" />
-        </label>
+            <label>
+              <span>Assigned To</span>
+              <Input onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" radius="md" />
+            </label>
 
-        <label>
-          <span>Difficulty</span>
-          <Rating onChange={handleChange} defaultValue={defaultValues.difficulty} name="difficulty" color="red" />
-        </label>
+            <label>
+              <span>Difficulty</span>
+              <Rating onChange={handleChange} defaultValue={defaultValues.difficulty} name="difficulty" color="red" />
+            </label>
 
-        <label>
-          <Button type="submit">Add Item</Button>
-        </label>
-      </form>
+            <label>
+              <Button type="submit">Add Item</Button>
+            </label>
+          </form>
+        </Grid.Col>
 
-      <List toggleComplete={toggleComplete} />
-      <Pagination value={activePage} onChange={setPage} total={1} position="center" color="gray" radius="xl" withEdges/>
+        <Grid.Col xs={12} sm={8}>
+          <List toggleComplete={toggleComplete} />
+        </Grid.Col>
+
+      </Grid>
     </>
   );
 };
-
 export default Todo;
