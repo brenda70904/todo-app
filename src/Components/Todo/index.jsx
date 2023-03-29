@@ -3,7 +3,7 @@ import useForm from '../../hooks/form';
 import { SettingContext } from '../../Context/Settings';
 import List from '../List'
 import { v4 as uuid } from 'uuid';
-import { Button, Input, Rating, Grid, createStyles } from '@mantine/core';
+import { Button, TextInput, Rating, Grid, createStyles, Card, Text } from '@mantine/core';
 
 
 //styling
@@ -61,36 +61,43 @@ const Todo = () => {
   return (
     <>
       <h1 data-testid="todo-h1" className={classes.h1} >To Do List: {incomplete} items pending</h1>
-      <Grid styles={{ width: "80%", margin: "auto" }}>
+      <Grid styles={{ width: "50%", margin: "auto" }}>
 
         <Grid.Col xs={12} sm={4}>
-          <form onSubmit={handleSubmit}>
+          <Card>
+            <form onSubmit={handleSubmit}>
 
-            <h2>Add To Do Item</h2>
+              <h2>Add To Do Item</h2>
 
-            <label>
-              <span>To Do Item</span>
-              <Input onChange={handleChange} name="text" type="text" placeholder="Item Details" radius="md" />
-            </label>
+                <TextInput 
+                onChange={handleChange} 
+                label="To Do Item"
+                name="text" 
+                placeholder="Item Details" 
+                />
 
-            <label>
-              <span>Assigned To</span>
-              <Input onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" radius="md" />
-            </label>
+                <TextInput 
+                onChange={handleChange} 
+                name="assignee" 
+                placeholder="Assignee Name" 
+                label="Assigned To" />
+              
+                <Text>Difficulty</Text>
 
-            <label>
-              <span>Difficulty</span>
-              <Rating onChange={handleChange} defaultValue={defaultValues.difficulty} name="difficulty" color="red" />
-            </label>
-
-            <label>
-              <Button type="submit">Add Item</Button>
-            </label>
-          </form>
+                <Rating 
+                onChange={handleChange} 
+                defaultValue={defaultValues.difficulty} 
+                name="difficulty" 
+                color="red" />
+              
+                <Button type="submit">Add Item</Button>
+              
+            </form>
+          </Card>
         </Grid.Col>
 
         <Grid.Col xs={12} sm={8}>
-          <List toggleComplete={toggleComplete} />
+          <List toggleComplete={toggleComplete} deleteItem={deleteItem} />
         </Grid.Col>
 
       </Grid>

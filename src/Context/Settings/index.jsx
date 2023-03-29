@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react';
 export const SettingContext = React.createContext();
 
 const SettingProvider = ({ children }) => {
-// pass to form
+  // pass to form
   const [values, setValues] = useState({});
 
-// pass to Todo
+  // pass to Todo
   const [activePage, setPage] = useState(1);
   const [list, setList] = useState([]);
   const [incomplete, setIncomplete] = useState([]);
@@ -15,10 +15,25 @@ const SettingProvider = ({ children }) => {
   });
   const [displayCount, setDisplayCount] = useState(3);
   const [sort, setSort] = useState('difficulty');
-  const [showComplete, setShowComplete] = useState(false);
+  const [showComplete, setShowComplete] = useState(true);
 
-  const contextValue = { 
-    showComplete, 
+  const saveLocally = () => {
+    localStorage.setItem('todo', JSON.stringify({ displayCount, showComplete, sort }));
+  }
+
+
+  useEffect(() => {
+
+    let storage = JSON.parse(localStorage.getItem('todo'));
+    if (storage) {
+      setShowComplete(storage.showComplete);
+      setDisplayCount(storage.displayCount);
+      setSort(storage.sort);
+    }
+  }, []);
+
+  const contextValue = {
+    showComplete,
     setShowComplete,
     displayCount,
     setDisplayCount,
@@ -26,18 +41,15 @@ const SettingProvider = ({ children }) => {
     setSort,
     activePage,
     setPage,
-    list, 
-    setList, 
-    incomplete, 
-    setIncomplete, 
+    list,
+    setList,
+    incomplete,
+    setIncomplete,
     defaultValues,
     values,
     setValues,
+    saveLocally,
   };
-
-  useEffect(()=>{
-    localStorage.setItem(`${list}`,JSON.stringify(values))
-  },[values]);
 
   // useEffect(()=>{
   //   let items = JSON.parse(localStorage.getItem())
