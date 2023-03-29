@@ -28,8 +28,8 @@ const SettingForm = () => {
   return (
     <>
       <h1 className={classes.h1}> <IconSettings />Manage Settings</h1>
-      <Grid>
-        <Grid.Col xls={12} sm={5}>
+      <Grid style={{width:'80%', margin:'auto'}}>
+        <Grid.Col xls={12} sm={6}>
           <Card withBorder>
             <Switch
               label="show Complete"
