@@ -1,16 +1,20 @@
-import { createStyles, Header, Navbar,Text} from "@mantine/core";
+import { createStyles, Header, Navbar,NavLink,Text} from "@mantine/core";
 
 
 const useStyles = createStyles((theme)=>({
   navbar:{
     display:'flex',
+    flexDirection:'row',
+    alignItems: 'cneter',
+    justifyContent:'space-between',
     backgroundColor: theme.colors.blue[9],
     color: theme.colors.gray[0],
     hight:'100%',
-    padding:theme.spacing.md,
-    fontSize:theme.fontSizes.md,
+    padding:'20px',
+    fontSize:theme.fontSizes.xl,
 
   },
+
 
 }));
 
@@ -20,8 +24,8 @@ const HeaderComponent = () =>{
 
     <Header >
       <Navbar className={classes.navbar} height={100} >
-          <Text>Home</Text>
-          <Text>Todo - App</Text>
+          <Text >Home</Text>
+          <Text >Setting</Text>
       </Navbar>
     
     </Header>

@@ -5,7 +5,7 @@ import { Pagination } from '@mantine/core';
 
 
 const List = ({toggleComplete}) => {
-  const {activePage, setPage, list, showComplete, displayCount} = useContext(SettingContext);
+  const {activePage, setPage, list ,showComplete, displayCount} = useContext(SettingContext);
 
   const listToRender = showComplete ? list: list.filter(item=> !item.complete)
   const listStart = displayCount * (activePage -1) 

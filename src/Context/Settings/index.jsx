@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export const SettingContext = React.createContext();
 
@@ -13,8 +13,7 @@ const SettingProvider = ({ children }) => {
   const [defaultValues] = useState({
     difficulty: 4,
   });
-  
-  const [displayCount, seDisplayCount] = useState(3);
+  const [displayCount, setDisplayCount] = useState(3);
   const [sort, setSort] = useState('difficulty');
   const [showComplete, setShowComplete] = useState(false);
 
@@ -22,7 +21,7 @@ const SettingProvider = ({ children }) => {
     showComplete, 
     setShowComplete,
     displayCount,
-    seDisplayCount,
+    setDisplayCount,
     sort,
     setSort,
     activePage,
@@ -36,6 +35,13 @@ const SettingProvider = ({ children }) => {
     setValues,
   };
 
+  useEffect(()=>{
+    localStorage.setItem(`${list}`,JSON.stringify(values))
+  },[values]);
+
+  // useEffect(()=>{
+  //   let items = JSON.parse(localStorage.getItem())
+  // })
 
   return (
     <SettingContext.Provider value={contextValue}>

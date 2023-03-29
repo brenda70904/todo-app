@@ -10,9 +10,9 @@
 
 ### Links and Resources
 
-- [GitHub Actions ci/cd](https://github.com/brenda70904/todo-app/actions/) 
+- [GitHub Actions ci/cd](https://github.com/brenda70904/todo-app/actions)
 <!-- - [back-end server url](http://xyz.com) (when applicable) -->
-<!-- - [front-end application](http://xyz.com) (when applicable) -->
+- [front-end application](https://todo-app-h2w6.onrender.com)
 
 ### Setup
 

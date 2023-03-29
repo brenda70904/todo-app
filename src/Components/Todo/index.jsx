@@ -5,6 +5,8 @@ import List from '../List'
 import { v4 as uuid } from 'uuid';
 import { Button, Input, Rating, Grid, createStyles } from '@mantine/core';
 
+
+//styling
 const useStyles = createStyles((theme) => ({
   h1: {
     background: theme.colors.gray[8],
@@ -17,7 +19,6 @@ const useStyles = createStyles((theme) => ({
     marginBottom: theme.spacing.md,
   }
 }));
-
 
 const Todo = () => {
   const { classes } = useStyles();
