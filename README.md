@@ -21,14 +21,18 @@
 
 #### How to initialize/run your application (where applicable)
 
-- `npm start`
+- to install the package : `npm i`
+- to start the app : `npm start`
 
 #### How to use your library (where applicable)
 
 #### Features / Routes
 
-- Feature One: Details of feature
-
+- user have the ability add task to list
+- user can level the difficulty to tesk
+- user can assign the task to others
+- when the task is complete , user can click the badge to show it's complete.
+- user can decided how many item shows on each page
 
 #### Tests
 

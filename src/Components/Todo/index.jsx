@@ -64,34 +64,38 @@ const Todo = () => {
       <Grid styles={{ width: "50%", margin: "auto" }}>
 
         <Grid.Col xs={12} sm={4}>
-          <Card>
+          <Card withBorder ml="20px" mt="13px">
             <form onSubmit={handleSubmit}>
 
               <h2>Add To Do Item</h2>
 
-                <TextInput 
-                onChange={handleChange} 
+              <TextInput
+                onChange={handleChange}
                 label="To Do Item"
-                name="text" 
-                placeholder="Item Details" 
+                name="text"
+                placeholder="Item Details"
+                mb="md"
+              />
+
+              <TextInput
+                onChange={handleChange}
+                name="assignee"
+                placeholder="Assignee Name"
+                label="Assigned To" 
+                mb="md"
                 />
 
-                <TextInput 
-                onChange={handleChange} 
-                name="assignee" 
-                placeholder="Assignee Name" 
-                label="Assigned To" />
-              
-                <Text>Difficulty</Text>
+              <Text>Difficulty</Text>
 
-                <Rating 
-                onChange={handleChange} 
-                defaultValue={defaultValues.difficulty} 
-                name="difficulty" 
-                color="red" />
-              
-                <Button type="submit">Add Item</Button>
-              
+              <Rating
+                onChange={handleChange}
+                defaultValue={defaultValues.difficulty}
+                name="difficulty"
+                color="red" 
+                mb="md"
+                />
+
+              <Button type="submit">Add Item</Button>
             </form>
           </Card>
         </Grid.Col>
