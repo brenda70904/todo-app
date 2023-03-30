@@ -1,23 +1,17 @@
-import { createStyles, Header, Navbar, NavLink, Group } from "@mantine/core";
-
+import { createStyles, Header, Navbar, Group } from "@mantine/core";
+import { Link } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
   navbar: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'cneter',
-    justifyContent: 'space-between',
-    backgroundColor: theme.colors.blue[9],
-    hight: '100%',
-    padding: '20px',
-
+    backgroundColor: theme.colors.blue[7],
+    height: '100%',
   },
-  link:{
+  link: {
     color: theme.colors.gray[0],
-    padding: '20px',
-    fontSize: theme.fontSizes.xl,
+    fontSize: theme.fontSizes.md,
+    padding: theme.spacing.md,
+    textDecoration: 'none',
   }
-
 }));
 
 const HeaderComponent = () => {
@@ -27,8 +21,8 @@ const HeaderComponent = () => {
     <Header >
       <Navbar className={classes.navbar} height={100} >
         <Group>
-          <NavLink className={classes.link} to="/" default >Home</NavLink>
-          <NavLink to="setting">Settings</NavLink>
+          <Link className={classes.link} to="/" default >Home</Link>
+          <Link to="setting">Settings</Link>
         </Group>
       </Navbar>
 
