@@ -1,16 +1,21 @@
 import { useContext, useEffect } from 'react';
 import { SettingContext } from '../Context/Settings';
 
+
 const useForm = (callback, defaultValues={}) => {
 
   // const [values, setValues] = useState({});
 
-  const {values, setValues} = useContext(SettingContext);
+  const {list, values, setValues, saveLocally} = useContext(SettingContext);
 
-  const handleSubmit = (event) => {
+  const handleSubmit =  (event) => {
     event.preventDefault();
-    callback({...values});
+    callback({...values});    
   };
+
+  useEffect(()=>{
+    saveLocally();
+  },[list,saveLocally])
 
   const handleChange = (event) => {
     let name, value;

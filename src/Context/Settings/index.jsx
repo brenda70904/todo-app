@@ -19,18 +19,22 @@ const SettingProvider = ({ children }) => {
 
   const saveLocally = () => {
     localStorage.setItem('todo', JSON.stringify({ displayCount, showComplete, sort }));
+    // localStorage.setItem('todoList', JSON.stringify(list));
   }
 
 
   useEffect(() => {
-
+    // let storagelist = JSON.parse(localStorage.getItem('todoList'));
     let storage = JSON.parse(localStorage.getItem('todo'));
     if (storage) {
+      console.log('storage',storage.list);
       setShowComplete(storage.showComplete);
       setDisplayCount(storage.displayCount);
       setSort(storage.sort);
+      
     }
   }, []);
+
 
   const contextValue = {
     showComplete,

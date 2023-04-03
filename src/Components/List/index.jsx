@@ -15,6 +15,7 @@ const List = ({ toggleComplete, deleteItem }) => {
 
   const displayList = listToRender.slice(listStart, listEnd);
 
+  
   return (
     <>
       {/* <header data-testid="todo-header">

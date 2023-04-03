@@ -4,7 +4,7 @@ import { SettingContext } from '../../Context/Settings';
 import List from '../List'
 import { v4 as uuid } from 'uuid';
 import { Button, TextInput, Rating, Grid, createStyles, Card, Text } from '@mantine/core';
-
+import {Auth} from '../Auth';
 
 //styling
 const useStyles = createStyles((theme) => ({
@@ -22,7 +22,7 @@ const useStyles = createStyles((theme) => ({
 
 const Todo = () => {
   const { classes } = useStyles();
-  const { list, setList, incomplete, setIncomplete, defaultValues } = useContext(SettingContext);
+  const { list, setList, incomplete, setIncomplete, defaultValues, saveLocally } = useContext(SettingContext);
   const { handleChange, handleSubmit } = useForm(addItem, defaultValues);
 
   function addItem(item) {
@@ -30,6 +30,7 @@ const Todo = () => {
     item.complete = false;
     console.log(item);
     setList([...list, item]);
+
   }
 
   function deleteItem(id) {
@@ -62,42 +63,43 @@ const Todo = () => {
     <>
       <h1 data-testid="todo-h1" className={classes.h1} >To Do List: {incomplete} items pending</h1>
       <Grid styles={{ width: "50%", margin: "auto" }}>
-
         <Grid.Col xs={12} sm={4}>
-          <Card withBorder ml="20px" mt="13px">
-            <form onSubmit={handleSubmit}>
+          <Auth capability="create">
+            <Card withBorder ml="20px" mt="13px">
+              <form onSubmit={handleSubmit}>
 
-              <h2>Add To Do Item</h2>
+                <h2>Add To Do Item</h2>
 
-              <TextInput
-                onChange={handleChange}
-                label="To Do Item"
-                name="text"
-                placeholder="Item Details"
-                mb="md"
-              />
-
-              <TextInput
-                onChange={handleChange}
-                name="assignee"
-                placeholder="Assignee Name"
-                label="Assigned To" 
-                mb="md"
+                <TextInput
+                  onChange={handleChange}
+                  label="To Do Item"
+                  name="text"
+                  placeholder="Item Details"
+                  mb="md"
                 />
 
-              <Text>Difficulty</Text>
-
-              <Rating
-                onChange={handleChange}
-                defaultValue={defaultValues.difficulty}
-                name="difficulty"
-                color="red" 
-                mb="md"
+                <TextInput
+                  onChange={handleChange}
+                  name="assignee"
+                  placeholder="Assignee Name"
+                  label="Assigned To"
+                  mb="md"
                 />
 
-              <Button type="submit">Add Item</Button>
-            </form>
-          </Card>
+                <Text>Difficulty</Text>
+
+                <Rating
+                  onChange={handleChange}
+                  defaultValue={defaultValues.difficulty}
+                  name="difficulty"
+                  color="red"
+                  mb="md"
+                />
+
+                <Button type="submit">Add Item</Button>
+              </form>
+            </Card>
+          </Auth>
         </Grid.Col>
 
         <Grid.Col xs={12} sm={8}>
